@@ -79,7 +79,7 @@ h+='</div>';el.innerHTML=h;el.querySelectorAll('[data-k]').forEach(b=>b.onclick=
 function key(k){const won=guesses.includes(A);if(won||guesses.length===6)return;if(k==='BACK'){entry=entry.slice(0,-1);return render()}
 if(k==='ENTER'){if(entry.length!==N)return render('Enter all '+N+' letters.');if(!REG.has(entry))return render('Person has not registered. No chance used.');if(guesses.includes(entry))return render('Already tried that name.');guesses.push(entry);entry='';return render()}
 if(entry.length<N)entry+=k;render()}
-document.addEventListener('keydown',e=>{if(!el.classList.contains('on')||e.ctrlKey||e.metaKey||e.altKey)return;if(e.key==='Enter')key('ENTER');else if(e.key==='Backspace')key('BACK');else if(/^[a-zA-Z]$/.test(e.key))key(e.key.toUpperCase())});
+document.addEventListener('keydown',e=>{if(!el.classList.contains('on')||e.ctrlKey||e.metaKey||e.altKey)return;if(e.target&&/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;if(e.key==='Enter')key('ENTER');else if(e.key==='Backspace')key('BACK');else if(/^[a-zA-Z]$/.test(e.key))key(e.key.toUpperCase())});
 render()})();
 /* DETECTIVE */
 (function(){const d=D.detective,el=$('#det');let shown=1,done=false,msg='',dsaved=false,dNote='',dPts=0,dSaved='';
