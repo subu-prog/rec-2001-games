@@ -42,7 +42,7 @@ const D={"date": "20 October 2026", "wordle": {"answer": "KIREET", "registered":
 const $=s=>document.querySelector(s);
 const API='https://script.google.com/macros/s/AKfycbyrmEGXPMrZe4PgHR8NArNhLuHR8jswlUOjqk4tyb1akYIrLuPKW836HkoL-ecj7nWxoA/exec';
 const PAGE=location.origin+location.pathname;
-const safe=s=>s.replace(/[^\x00-\x7F]/g,c=>({'🟩':'G','🟨':'Y','⬛':'B','🟥':'W','·':'-'}[c]||''));
+const safe=s=>s.replace(/[^\x00-\x7F]/gu,c=>({'🟩':'G','🟨':'Y','⬛':'B','🟥':'W','·':'-'}[c]||''));
 const norm=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toUpperCase().replace(/[^A-Z]/g,'');
 $('#date').textContent=D.date+' · one link, every game and quiz';
 const PSH='REC 2001 name games and quiz: Wordle, Name Detective, Name Weave and the daily quiz. One link, no sign-in:\n'+PAGE;$('#wsp').href='https://wa.me/?text='+encodeURIComponent(safe(PSH));$('#wsp').dataset.p=encodeURIComponent(PSH);
