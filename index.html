@@ -45,6 +45,7 @@ const PAGE=location.origin+location.pathname;
 const norm=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toUpperCase().replace(/[^A-Z]/g,'');
 $('#date').textContent=D.date+' · one link, every game and quiz';
 $('#wsp').href='https://wa.me/?text='+encodeURIComponent('REC 2001 name games and quiz: Wordle, Name Detective, Name Weave and the daily quiz. One link, no sign-in:\n'+PAGE);
+document.addEventListener('click',e=>{const a=e.target.closest('a.wa');if(!a||!navigator.share)return;e.preventDefault();try{const t=new URL(a.href).searchParams.get('text');if(t)navigator.share({text:t}).catch(()=>{})}catch(_){}});
 document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('on',x===b));document.querySelectorAll('section').forEach(s=>s.classList.toggle('on',s.id===b.dataset.t));if(b.dataset.t==='quiz')loadBoard()});
 /* WORDLE */
 (function(){const A=D.wordle.answer,N=A.length,REG=new Set(D.wordle.registered);let guesses=[],entry='';const el=$('#wordle');
